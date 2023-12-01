@@ -59,16 +59,12 @@ class spam:
 
 	def phd(self):
 		data = {'phone_number': self.nomer}
-
-    try:
         r = requests.post("https://auth.dekoruma.com/api/v1/register/request-otp-phone-number/?format=json", headers=headers, data=json.dumps(data))
 
         if 'We have sent an OTP to your phone, Please enter the 4 digit code.' in r.text:
             return f'\x1b[92mSpam PHD {self.nomer} Success!'
         else:
             return f'\x1b[91mSpam PHD {self.nomer} Fail!'
-    except Exception as e:
-        return f'\x1b[91mSpam PHD {self.nomer} Error: {str(e)}'
 			
 	def balaji(self):
 		urlb="https://api.cloud.altbalaji.com/accounts/mobile/verify?domain=ID"
